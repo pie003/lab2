@@ -102,7 +102,7 @@ public class Gui extends JFrame {
                         Object[][] data;
                         
                         for (CommonMath math: mathArray){
-                            System.out.println("первая итерация записи");
+                            
                             data = new Object[math.getCov().length][math.getCov().length+headers.length];
                             data[0][0] = math.getGeomMean();
                             data[0][1] = math.getStandartDeviation();
@@ -113,13 +113,13 @@ public class Gui extends JFrame {
                             data[0][6] = math.getVar();
                             data[0][7] = math.getMax();
                             data[0][8] = math.getMin();
-                            System.out.println("все какашки записашки");
+                            
                             for (int i=0; i<math.getCov().length;i++){
                                 for (int j=0; j<math.getCov()[i].length; j++){
                                     data[i][j+headers.length]=math.getCov()[i][j];
                                 }
                             }
-                            System.out.println("в цикле какашки записашки");
+                            
                             xslxworker.writeToExcelSheet(path, headers, data, math.getName()); 
                         }
                         
