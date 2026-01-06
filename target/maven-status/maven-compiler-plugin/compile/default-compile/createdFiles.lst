@@ -4,6 +4,7 @@ Gui\Xlsx.class
 Gui\Gui.class
 CommonMath\MathDirector.class
 Gui\Xlsx$1.class
+Gui\Gui$3.class
 com\mycompany\sem6lab2\main.class
 CommonMath\CommonMath.class
 Gui\Gui$1.class

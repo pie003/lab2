@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import org.apache.commons.math3.distribution.NormalDistribution;
 import org.apache.commons.math3.stat.correlation.Covariance;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
-import org.apache.commons.math3.stat.inference.TTest;
 
 /**
  *
@@ -21,7 +20,7 @@ public class MathBuilder implements MathBuilderInterface{
     private double span;
     private double Min;
     private double Max;
-    private double[][] cov;
+    private double cov;
     private double N;
     private double coinfidenceInt;
     private double var; 
@@ -57,14 +56,11 @@ public class MathBuilder implements MathBuilderInterface{
 
     @Override
     public MathBuilderInterface setCov() {
-        double[][] realMatrix = new double[this.doubleDist.length][this.doubleDist.length];
-        for (int i=0; i<this.doubleDist.length;i++){
-                realMatrix[i][i] = this.doubleDist[i];
-        }
-        Covariance Cov = new Covariance(realMatrix);
-        cov=Cov.getCovarianceMatrix().getData();
+        Covariance covariance = new Covariance();
+        this.cov = covariance.covariance(doubleDist, doubleDist);
         return this;
     }
+
 
     @Override
     public MathBuilderInterface setVar() {
@@ -134,7 +130,5 @@ public class MathBuilder implements MathBuilderInterface{
         CommonMath math = new CommonMath(this.geomMean, this.mean, this.standartDeviation, this.span, this.Min, this.Max,this.cov, this.N,this.coinfidenceInt, this.var, this.kvar, this.name);
         return math;
     }
-
-    
-            
+          
 }

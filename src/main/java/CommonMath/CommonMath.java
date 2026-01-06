@@ -22,14 +22,14 @@ public class CommonMath {
     private final double span;
     private final double Min;
     private final double Max;
-    private final double[][] cov;
+    private final double cov;
     private final double N;
     private final double coinfidenceInt;
     private final double var; 
     private final double kvar;
     private final String distName;
     
-    public CommonMath (double geomMean,double mean,double standartDeviation,double span,double Min,double Max,double[][] cov,double N,double coinfidenceInt,double var,double kvar, String name){
+    public CommonMath (double geomMean, double mean, double standartDeviation, double span, double Min, double Max, double cov, double N, double coinfidenceInt, double var, double kvar, String name){
         this.geomMean=geomMean;
         this.mean=mean;
         this.standartDeviation=standartDeviation;
@@ -79,7 +79,7 @@ public class CommonMath {
         return Max;
     }
 
-    public double[][] getCov() {
+    public double getCov() {
         return cov;
     }
 
@@ -105,7 +105,7 @@ public class CommonMath {
     
     public String getStatisticCharact (){
         String staticCharact;
-        staticCharact = "Среднее геометрическое"+"\t"+this.geomMean+"\n"+"Оценка стандартного отклонения"+"\t"+this.standartDeviation+"\n"+"Размах"+"\t"+this.span+"\n"+"Количество элементов в выборке"+"\t"+this.N+"\n"+"Коэффициент вариации"+"\t"+this.kvar+"\n"+"Доверительный интервал для мат. ожидания"+"\t"+this.coinfidenceInt+"\n"+"Оценка дисперсии"+"\t"+this.var+"\n"+"Максимум"+"\t"+this.Max+"\n"+"Минимум"+"\t"+this.Min+"\n"+"Коэффициенты ковариации для всех пар случайных чисел"+"\n"+covMatrixtoString(this.cov)+'\n';
+        staticCharact = "Среднее геометрическое"+"\t"+this.geomMean+"\n"+"Оценка стандартного отклонения"+"\t"+this.standartDeviation+"\n"+"Размах"+"\t"+this.span+"\n"+"Количество элементов в выборке"+"\t"+this.N+"\n"+"Коэффициент вариации"+"\t"+this.kvar+"\n"+"Доверительный интервал для мат. ожидания"+"\t"+this.coinfidenceInt+"\n"+"Оценка дисперсии"+"\t"+this.var+"\n"+"Максимум"+"\t"+this.Max+"\n"+"Минимум"+"\t"+this.Min+"\n"+"Коэффициент ковариации"+"\n"+this.cov+'\n';
         return staticCharact;    
     }
     

@@ -10,6 +10,7 @@ import java.io.IOException;
 import static java.lang.Double.NaN;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import org.apache.poi.ss.usermodel.*;
 import static org.apache.poi.ss.usermodel.CellType.BOOLEAN;
 import static org.apache.poi.ss.usermodel.CellType.STRING;
@@ -105,6 +106,22 @@ public class Xlsx {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public List<String> getSheetNames(String path) throws Exception {
+    List<String> sheetNames = new ArrayList<>();
+
+    try (FileInputStream fis = new FileInputStream(path);
+         Workbook workbook = new XSSFWorkbook(fis)) {
+
+        int numberOfSheets = workbook.getNumberOfSheets();
+        for (int i = 0; i < numberOfSheets; i++) {
+            Sheet sheet = workbook.getSheetAt(i);
+            sheetNames.add(sheet.getSheetName());
+        }
+    }
+
+    return sheetNames;
     }
 
 }
